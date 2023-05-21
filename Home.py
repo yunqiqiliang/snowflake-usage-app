@@ -12,6 +12,7 @@ for key in st.session_state:
 
 st.title("Welcome to Qiliang's Snowflake Usage Insights app!")
 st.sidebar.text(f"Account: {st.secrets.sf_usage_app.account}")
+st.sidebar.text(f"Snowflake Role: accountadmin")
 st.sidebar.info("Choose a page!")
 st.markdown(
     """
