@@ -135,7 +135,7 @@ def main():
     # Add filtering widget per Warehouse name
     warehouses = warehouse_usage_hourly.WAREHOUSE_NAME.unique()
     selected_warehouse = st.selectbox(
-        "Choose warehouse",
+        "Choosed warehouse",
         warehouses.tolist(),
     )
 
