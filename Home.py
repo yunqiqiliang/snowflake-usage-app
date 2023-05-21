@@ -15,8 +15,8 @@ st.sidebar.text(f"Account: {st.secrets.sf_usage_app.account}")
 st.sidebar.info("Choose a page!")
 st.markdown(
     """
-This app provides insights on a demo Snowflake account usage.
-
+This app provides insights on a Snowflake account usage.
+And help you understand Snowflake's charge items.
 ### Get started!
 
 👈 Select a page in the sidebar!
