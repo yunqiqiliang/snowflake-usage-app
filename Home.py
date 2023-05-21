@@ -16,7 +16,8 @@ st.sidebar.info("Choose a page!")
 st.markdown(
     """
 This app provides insights on a Snowflake account usage.
-And help you understand Snowflake's charge items.
+### Help you understand Snowflake's charge items.
+### Current Snowflake Role: accountadmin
 ### Get started!
 
 👈 Select a page in the sidebar!
