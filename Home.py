@@ -10,7 +10,7 @@ gui.icon("🌀")
 for key in st.session_state:
     st.session_state[key] = st.session_state[key]
 
-st.title("Welcome to the Usage Insights app!")
+st.title("Welcome to Qiliang's Snowflake Usage Insights app!")
 st.sidebar.text(f"Account: {st.secrets.sf_usage_app.account}")
 st.sidebar.info("Choose a page!")
 st.markdown(
