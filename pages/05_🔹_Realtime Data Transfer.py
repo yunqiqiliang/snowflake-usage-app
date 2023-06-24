@@ -19,6 +19,19 @@ def main():
     # Header
     # gui.icon("🔹")
     st.title("Real time data transfer, From Postgres to Snowflake")
+     # --------------------------------
+    # ---- Real time data transfer ----
+    # ---------------------------------
+
+    gui.space(1)
+    st.subheader("Real time data transfer")
+    # Get data
+    query = sql.CUSTOMERS_COUNT_QUERY
+    df = sf.sql_to_dataframe(
+        query.format(date_from=date_from, date_to=date_to)
+    )
+
+    
 
     # ----------------------
     # ---- Service type ----
