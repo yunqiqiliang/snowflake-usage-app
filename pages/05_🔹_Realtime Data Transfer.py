@@ -27,24 +27,18 @@ def main():
 
     gui.space(1)
     st.subheader("Real time data transfer")
-    while True:
-        # Get data
-        query = sql.CUSTOMERS_COUNT_QUERY
-        df = sf.sql_to_dataframe(
-            query.format(date_from=date_from, date_to=date_to)
-        )
-        st.table(df)
-    
-        query = sql.CUSTOMERS_LIMIT_10
-        df = sf.sql_to_dataframe(
-            query.format(date_from=date_from, date_to=date_to)
-        )
-        st.table(df)
-        # 等待 5 秒再重新运行应用程序
-        time.sleep(5)
-    
-        # 重新运行应用程序
-        st.experimental_rerun()
+    # Get data
+    query = sql.CUSTOMERS_COUNT_QUERY
+    df = sf.sql_to_dataframe(
+        query.format(date_from=date_from, date_to=date_to)
+    )
+    st.table(df)
+
+    query = sql.CUSTOMERS_LIMIT_10
+    df = sf.sql_to_dataframe(
+        query.format(date_from=date_from, date_to=date_to)
+    )
+    st.table(df)
 
 if __name__ == "__main__":
     main()
