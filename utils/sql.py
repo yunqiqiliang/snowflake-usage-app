@@ -1,6 +1,11 @@
 CUSTOMERS_USE_ROLE = """
 use role ARTIE_TRANSFER_ROLE;
 """
+
+ACCOUNT_USE_ROLE = """
+use role accountadmin;
+"""
+
 CUSTOMERS_COUNT_QUERY = """
 select count(*)
 from customers.public.customers;
