@@ -32,6 +32,14 @@ def main():
     )
     st.table(df)
 
+    query = sql.CUSTOMERS_LIMIT_10
+    df = sf.sql_to_dataframe(
+        query.format(date_from=date_from, date_to=date_to)
+    )
+    st.table(df)
+
+    
+
 
 
 if __name__ == "__main__":
