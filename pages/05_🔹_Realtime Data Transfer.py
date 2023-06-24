@@ -29,7 +29,7 @@ def main():
     query = sql.CUSTOMERS_USE_ROLE
     query = sql.CUSTOMERS_COUNT_QUERY
     df = sf.sql_to_dataframe(
-        query.format(date_from=date_from, date_to=date_to)
+        query
     )
 
     query = sql.ACCOUNT_USE_ROLE
