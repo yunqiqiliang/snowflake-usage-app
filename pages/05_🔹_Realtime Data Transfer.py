@@ -1,5 +1,6 @@
 import plost
 import streamlit as st
+import time
 # from streamlit_autorefresh import st_autorefresh
 
 st.set_page_config(
@@ -26,18 +27,24 @@ def main():
 
     gui.space(1)
     st.subheader("Real time data transfer")
-    # Get data
-    query = sql.CUSTOMERS_COUNT_QUERY
-    df = sf.sql_to_dataframe(
-        query.format(date_from=date_from, date_to=date_to)
-    )
-    st.table(df)
-
-    query = sql.CUSTOMERS_LIMIT_10
-    df = sf.sql_to_dataframe(
-        query.format(date_from=date_from, date_to=date_to)
-    )
-    st.table(df)
+    while True:
+        # Get data
+        query = sql.CUSTOMERS_COUNT_QUERY
+        df = sf.sql_to_dataframe(
+            query.format(date_from=date_from, date_to=date_to)
+        )
+        st.table(df)
+    
+        query = sql.CUSTOMERS_LIMIT_10
+        df = sf.sql_to_dataframe(
+            query.format(date_from=date_from, date_to=date_to)
+        )
+        st.table(df)
+        # 等待 3 秒再重新运行应用程序
+        time.sleep(3)
+    
+        # 重新运行应用程序
+        st.experimental_rerun()
 
 if __name__ == "__main__":
     main()
