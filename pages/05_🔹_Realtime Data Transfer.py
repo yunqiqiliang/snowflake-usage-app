@@ -17,7 +17,7 @@ def main():
         date_from, date_to = gui.date_selector()
 
     # Header
-    gui.icon("🔹")
+    # gui.icon("🔹")
     st.title("Real time data transfer, From Postgres to Snowflake")
 
     # ----------------------
