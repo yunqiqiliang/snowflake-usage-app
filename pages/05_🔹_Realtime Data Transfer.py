@@ -40,8 +40,8 @@ def main():
             query.format(date_from=date_from, date_to=date_to)
         )
         st.table(df)
-        # 等待 3 秒再重新运行应用程序
-        time.sleep(3)
+        # 等待 5 秒再重新运行应用程序
+        time.sleep(5)
     
         # 重新运行应用程序
         st.experimental_rerun()
