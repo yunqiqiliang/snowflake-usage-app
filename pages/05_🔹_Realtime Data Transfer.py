@@ -32,6 +32,8 @@ def main():
         query.format(date_from=date_from, date_to=date_to)
     )
 
+    query = sql.ACCOUNT_USE_ROLE
+
     
 
     # ----------------------
