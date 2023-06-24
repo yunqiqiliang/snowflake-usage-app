@@ -26,6 +26,7 @@ def main():
     gui.space(1)
     st.subheader("Real time data transfer")
     # Get data
+    query = sql.DATA_TRANSFER_QUERY
     df = sf.sql_to_dataframe(
         query.format(date_from=date_from, date_to=date_to)
     )
