@@ -2,7 +2,7 @@ import plost
 import streamlit as st
 
 st.set_page_config(
-    page_title="Usage Insights app - Real time data transfer", page_icon="🔹", layout="centered"
+    page_title="Usage Insights app - Real time data transfer", page_icon="🔹", layout="wide"
 )
 
 from utils import charts, gui, processing
