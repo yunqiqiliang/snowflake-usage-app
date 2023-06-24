@@ -1,3 +1,11 @@
+CUSTOMERS_USE_ROLE = """
+use role ARTIE_TRANSFER_ROLE;
+"""
+CUSTOMERS_COUNT_QUERY = """
+select count(*)
+from customers.public.customers;
+"""
+
 QUERIES_QUERY = """
 select *
 from snowflake.account_usage.query_history
