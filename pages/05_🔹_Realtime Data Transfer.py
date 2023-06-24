@@ -7,7 +7,6 @@ st.set_page_config(
 
 from utils import charts, gui, processing
 from utils import snowflake_connector as sf
-from utils import snowflake_connector_rt as sf_rt
 from utils import sql as sql
 
 
@@ -27,7 +26,7 @@ def main():
     gui.space(1)
     st.subheader("Real time data transfer")
     # Get data
-    df = sf_rt.sql_to_dataframe_rt(
+    df = sf.sql_to_dataframe(
         query
     )
 
