@@ -26,13 +26,9 @@ def main():
     gui.space(1)
     st.subheader("Real time data transfer")
     # Get data
-    query = sql.CUSTOMERS_USE_ROLE
-    query = sql.CUSTOMERS_COUNT_QUERY
-    df = sf.sql_to_dataframe(
+    df = sf.sql_to_dataframe_rt(
         query
     )
-
-    query = sql.ACCOUNT_USE_ROLE
 
     
 
