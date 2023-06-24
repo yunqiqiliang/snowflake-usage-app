@@ -1,6 +1,6 @@
 import plost
 import streamlit as st
-from streamlit_autorefresh import st_autorefresh
+# from streamlit_autorefresh import st_autorefresh
 
 st.set_page_config(
     page_title="Usage Insights app - Real time data transfer", page_icon="🔹"
