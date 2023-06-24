@@ -1,3 +1,8 @@
+CUSTOMERS_LIMIT_10 = """
+select *
+from customers.public.customers limit 10;
+"""
+
 CUSTOMERS_COUNT_QUERY = """
 select count(*)
 from customers.public.customers;
