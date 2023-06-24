@@ -62,14 +62,6 @@ snowflake_connector = get_connector(
 cur = snowflake_connector.cursor()
 cur.execute(f"use warehouse {st.secrets.sf_usage_app.warehouse};")
 
-snowflake_connector_rt = get_connector(
-    secrets_key="sf_usage_app",
-    use_browser=False,
-)
-cur_rt = snowflake_connector_rt.cursor()
-cur_rt.execute(f"use warehouse {st.secrets.sf_usage_app.warehouse};")
-cur_rt.execute(f"use role ARTIE_TRANSFER_ROLE;")
-
 
 @st.experimental_memo(ttl=TIME_TO_LIVE)
 def sql_to_dataframe(sql_query: str) -> pd.DataFrame:
