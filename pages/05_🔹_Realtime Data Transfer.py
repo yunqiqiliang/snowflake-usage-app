@@ -30,6 +30,7 @@ def main():
     df = sf.sql_to_dataframe(
         query.format(date_from=date_from, date_to=date_to)
     )
+    st.table(df)
 
 
 
