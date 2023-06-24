@@ -15,7 +15,6 @@ plost = {editable = true, ref = "streamlit-style", git = "https://github.com/jri
 numpy = "*"
 snowflake-connector-python = ">=2.7.8"
 sqlparse = "*"
-streamlit-autorefresh = "*"
 
 
 [dev-packages]
