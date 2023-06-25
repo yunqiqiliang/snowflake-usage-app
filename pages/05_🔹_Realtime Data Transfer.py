@@ -1,6 +1,7 @@
 import plost
 import streamlit as st
 import time
+from schedule import every, repeat, run_pending
 # from streamlit_autorefresh import st_autorefresh
 
 st.set_page_config(
@@ -27,18 +28,22 @@ def main():
 
     gui.space(1)
     st.subheader("Real time data transfer")
-    # Get data
-    query = sql.CUSTOMERS_COUNT_QUERY
-    df = sf.sql_to_dataframe(
-        query.format(date_from=date_from, date_to=date_to)
-    )
-    st.table(df)
-
-    query = sql.CUSTOMERS_LIMIT_10
-    df = sf.sql_to_dataframe(
-        query.format(date_from=date_from, date_to=date_to)
-    )
-    st.table(df)
-
+    with st.empty():
+        @repeat(every(3).seconds)
+        # Get data
+        query = sql.CUSTOMERS_COUNT_QUERY
+        df = sf.sql_to_dataframe(
+            query.format(date_from=date_from, date_to=date_to)
+        )
+        st.table(df)
+    
+        query = sql.CUSTOMERS_LIMIT_10
+        df = sf.sql_to_dataframe(
+            query.format(date_from=date_from, date_to=date_to)
+        )
+        st.table(df)
+        while True:
+        run_pending()
+        time.sleep(1)
 if __name__ == "__main__":
     main()
