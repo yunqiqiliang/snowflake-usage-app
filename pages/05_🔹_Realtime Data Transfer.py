@@ -25,7 +25,7 @@ def main():
 
     gui.space(1)
     st.subheader("Real time data transfer")
-    with st.empty():
+    while True:
         @repeat(every(3).seconds)
         # Get data
         query = sql.CUSTOMERS_COUNT_QUERY
@@ -39,8 +39,10 @@ def main():
             query.format(date_from=date_from, date_to=date_to)
         )
         st.table(df)
-        while True:
-        run_pending()
-        time.sleep(1)
+        # Wait for 2 seconds
+        time.sleep(2)
+    
+        # Rerun the app to refresh the chart
+        streamlit.experimental_rerun()
 if __name__ == "__main__":
     main()
