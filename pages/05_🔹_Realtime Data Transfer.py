@@ -5,8 +5,7 @@ from utils import charts, gui, processing
 from utils import snowflake_connector as sf
 from utils import sql as sql
 
-from streamlit.report_thread import get_report_ctx
-from streamlit.server.server import Server
+from streamlit.server.util import get_report_ctx
 
 class SessionState:
     def __init__(self, **kwargs):
@@ -15,20 +14,13 @@ class SessionState:
 def get_session(key):
     session_state = SessionState()
     session_id = get_report_ctx().session_id
-
-    if hasattr(st._get_current_session(), '_session_state'):
-        # Session state already initialized for this session.
-        sessions = st._get_session_info().session_objects
-        if key not in sessions[session_id]._session_state:
-            # Create a new session state variable if it doesn't exist yet.
-            setattr(sessions[session_id]._session_state, key, None)
-        session_state = getattr(sessions[session_id]._session_state, key)
     
+    if hasattr(st, '_session_state'):
+        if key not in st._session_state:
+            st._session_state[key] = session_state
+        session_state = st._session_state[key]
     else:
-        # Initialize a new session.
-        session = Server.get_current()._get_session_info(session_id).session
-        setattr(session, '_session_state', session_state)
-        setattr(session_state, 'key', None)
+        st._session_state = {key: session_state}
 
     return session_state
 
