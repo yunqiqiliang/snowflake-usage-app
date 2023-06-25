@@ -4,15 +4,37 @@ import time
 from utils import charts, gui, processing
 from utils import snowflake_connector as sf
 from utils import sql as sql
-from streamlit.hashing import _CodeHasher
+
+from streamlit.report_thread import get_report_ctx
+from streamlit.server.server import Server
+
+class SessionState:
+    def __init__(self, **kwargs):
+        self.__dict__.update(kwargs)
+
+def get_session(key):
+    session_state = SessionState()
+    session_id = get_report_ctx().session_id
+
+    if hasattr(st._get_current_session(), '_session_state'):
+        # Session state already initialized for this session.
+        sessions = st._get_session_info().session_objects
+        if key not in sessions[session_id]._session_state:
+            # Create a new session state variable if it doesn't exist yet.
+            setattr(sessions[session_id]._session_state, key, None)
+        session_state = getattr(sessions[session_id]._session_state, key)
+    
+    else:
+        # Initialize a new session.
+        session = Server.get_current()._get_session_info(session_id).session
+        setattr(session, '_session_state', session_state)
+        setattr(session_state, 'key', None)
+
+    return session_state
 
 # st.set_page_config(
 #     page_title="Usage Insights app - Real time data transfer", page_icon="🔹", layout="wide"
 # )
-def get_state(hash_funcs=None):
-    return st.session_state
-
-
 def main():
 
     # Date selector widget
@@ -28,11 +50,11 @@ def main():
 
     gui.space(1)
     st.subheader("Real time data transfer")
+    state = get_session('count')
 
-    last_customer_count = get_state()
+    if state.count is None:
+        state.count = 0
 
-    if 'count' not in state:
-        last_customer_count.count = 0
    
     while True:
         # Get data
@@ -44,12 +66,12 @@ def main():
         
         
         total_customer_count = df.iloc[0, 0]
-        if last_customer_count.count == 0:
-            last_customer_count.count = total_customer_count
-        new_customer_count = total_customer_count - last_customer_count.count
+        if state.count == 0:
+            state.count = total_customer_count
+        new_customer_count = total_customer_count - state.count
         
         st.metric(label="客户总数", value="{:,}".format(total_customer_count), delta="{:,}".format(new_customer_count))
-        last_customer_count.count = total_customer_count
+        state.count = total_customer_count
         # query = sql.CUSTOMERS_LIMIT_10
         # df = sf.sql_to_dataframe(
         #     query.format(date_from=date_from, date_to=date_to)
