@@ -8,7 +8,8 @@ from snowflake.connector.connection import SnowflakeConnection
 
 from utils import gui, sql
 
-TIME_TO_LIVE = 60 * 60 * 6  # 6 hours caching
+# TIME_TO_LIVE = 60 * 60 * 6  # 6 hours caching
+TIME_TO_LIVE = 60   # 60 secends caching
 
 
 # Share the connector across all users connected to the app
