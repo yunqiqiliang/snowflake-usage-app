@@ -2,16 +2,13 @@ import plost
 import streamlit as st
 import time
 from schedule import every, repeat, run_pending
-# from streamlit_autorefresh import st_autorefresh
-
-st.set_page_config(
-    page_title="Usage Insights app - Real time data transfer", page_icon="🔹", layout="wide"
-)
-
 from utils import charts, gui, processing
 from utils import snowflake_connector as sf
 from utils import sql as sql
 
+st.set_page_config(
+    page_title="Usage Insights app - Real time data transfer", page_icon="🔹", layout="wide"
+)
 
 def main():
 
