@@ -4,10 +4,13 @@ import time
 from utils import charts, gui, processing
 from utils import snowflake_connector as sf
 from utils import sql as sql
+from streamlit.hashing import _CodeHasher
 
 # st.set_page_config(
 #     page_title="Usage Insights app - Real time data transfer", page_icon="🔹", layout="wide"
 # )
+def get_state(hash_funcs=None):
+    return st.session_state
 
 
 def main():
@@ -25,9 +28,11 @@ def main():
 
     gui.space(1)
     st.subheader("Real time data transfer")
-    new_customer_count = 0
-    last_customer_count = 0
-    total_customer_count = 0
+
+    last_customer_count = get_state()
+
+    if 'count' not in state:
+        last_customer_count.count = 0
    
     while True:
         # Get data
@@ -37,10 +42,14 @@ def main():
         )
         # st.table(df)
         
+        
         total_customer_count = df.iloc[0, 0]
-        new_customer_count = total_customer_count - last_customer_count
+        if last_customer_count.count == 0:
+            last_customer_count.count = total_customer_count
+        new_customer_count = total_customer_count - last_customer_count.count
+        
         st.metric(label="客户总数", value="{:,}".format(total_customer_count), delta="{:,}".format(new_customer_count))
-        last_customer_count = df.iloc[0, 0]
+        last_customer_count.count = total_customer_count
         # query = sql.CUSTOMERS_LIMIT_10
         # df = sf.sql_to_dataframe(
         #     query.format(date_from=date_from, date_to=date_to)
