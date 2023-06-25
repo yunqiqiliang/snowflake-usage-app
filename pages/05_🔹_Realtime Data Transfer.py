@@ -41,6 +41,6 @@ def main():
         time.sleep(3)
     
         # Rerun the app to refresh the chart
-        streamlit.experimental_rerun()
+        st.experimental_rerun()
 if __name__ == "__main__":
     main()
