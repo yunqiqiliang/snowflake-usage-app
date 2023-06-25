@@ -37,7 +37,7 @@ def main():
         
         total_customer_count = df.iloc[0, 0]
         new_customer_count = total_customer_count - last_customer_count
-        st.metric(label="客户总数", value="{:,}".format(total_customer_count), "{:,}".format(new_customer_count))
+        st.metric(label="客户总数", value="{:,}".format(total_customer_count), delta="{:,}".format(new_customer_count))
         last_customer_count = df.iloc[0, 0]
         # query = sql.CUSTOMERS_LIMIT_10
         # df = sf.sql_to_dataframe(
