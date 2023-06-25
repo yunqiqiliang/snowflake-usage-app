@@ -9,9 +9,7 @@ from utils import sql as sql
 #     page_title="Usage Insights app - Real time data transfer", page_icon="🔹", layout="wide"
 # )
 
-new_customer_count = 0
-last_customer_count = 0
-total_customer_count = 0
+
 def main():
 
     # Date selector widget
@@ -27,6 +25,9 @@ def main():
 
     gui.space(1)
     st.subheader("Real time data transfer")
+    new_customer_count = 0
+    last_customer_count = 0
+    total_customer_count = 0
    
     while True:
         # Get data
