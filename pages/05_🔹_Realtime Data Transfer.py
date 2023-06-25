@@ -37,8 +37,8 @@ def main():
         #     query.format(date_from=date_from, date_to=date_to)
         # )
         # st.table(df)
-        # Wait for 1 seconds
-        time.sleep(1)
+        # Wait for 10 seconds
+        time.sleep(10)
     
         # Rerun the app to refresh the chart
         st.experimental_rerun()
