@@ -24,9 +24,9 @@ def main():
 
     gui.space(1)
     st.subheader("Real time data transfer")
-    new_customer_count = 0
-    last_customer_count = 0
-    total_customer_count = 0
+    # new_customer_count = 0
+    # last_customer_count = 0
+    # total_customer_count = 0
     while True:
         # Get data
         query = sql.CUSTOMERS_COUNT_QUERY
