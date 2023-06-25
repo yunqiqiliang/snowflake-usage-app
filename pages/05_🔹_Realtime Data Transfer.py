@@ -1,7 +1,6 @@
 import plost
 import streamlit as st
 import time
-from schedule import every, repeat, run_pending
 from utils import charts, gui, processing
 from utils import snowflake_connector as sf
 from utils import sql as sql
