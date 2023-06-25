@@ -31,6 +31,7 @@ def main():
             query.format(date_from=date_from, date_to=date_to)
         )
         st.table(df)
+        st.metric(label="客户总数", value=df.iloc[0, 0], delta="1.2 °F")
     
         # query = sql.CUSTOMERS_LIMIT_10
         # df = sf.sql_to_dataframe(
