@@ -47,7 +47,7 @@ def main():
         # )
         # st.table(df)
         # Wait for 10 seconds
-        time.sleep(10)
+        time.sleep(2)
     
         # Rerun the app to refresh the chart
         st.experimental_rerun()
