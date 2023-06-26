@@ -9,6 +9,9 @@ gui.icon("🌀")
 # Make sure session state is preserved
 for key in st.session_state:
     st.session_state[key] = st.session_state[key]
+# Storing The Context
+if "last_customer_number" not in st.session_state:
+    st.last_customer_number = 0
 
 st.title("Welcome to Qiliang's Snowflake Usage Insights!")
 st.sidebar.text(f"Account: {st.secrets.sf_usage_app.account}")
