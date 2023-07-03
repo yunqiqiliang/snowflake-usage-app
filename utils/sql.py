@@ -8,6 +8,21 @@ select count(*)
 from customers.public.customers;
 """
 
+CUSTOMERS_0001_COUNT_QUERY = """
+select count(*)
+from customers_0001.public.customers;
+"""
+
+CUSTOMERS_0002_COUNT_QUERY = """
+select count(*)
+from customers_0002.public.customers;
+"""
+
+CUSTOMERS_0003_COUNT_QUERY = """
+select count(*)
+from customers_0003.public.customers;
+"""
+
 QUERIES_QUERY = """
 select *
 from snowflake.account_usage.query_history
