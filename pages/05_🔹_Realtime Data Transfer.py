@@ -39,11 +39,13 @@ def main():
         query_0001.format(date_from=date_from, date_to=date_to)
     )
     total_customer_0001_count = df_0001.iloc[0, 0]
-
+    last_customer_0001_count = 0
+    new_customer_0001_count = 0
     if st.write(st.session_state.last_customer_0001_number) == 0 :
         st.session_state.last_customer_0001_number = total_customer_0001_count
-    
-    metric_value_0001=st.metric(label="Cutomers_0001客户总数", value="{:,}".format(total_customer_0001_count), delta="{:,}".format(total_customer_0001_count - st.write(st.session_state.last_customer_0001_number)))
+    last_customer_0001_count = st.write(st.session_state.last_customer_0001_number)
+    new_customer_0001_count = total_customer_0001_count - last_customer_0001_count
+    metric_value_0001=st.metric(label="Cutomers_0001客户总数", value="{:,}".format(total_customer_0001_count), delta="{:,}".format(new_customer_0001_count))
    
     while True:
         # Wait for 1 seconds
@@ -54,11 +56,12 @@ def main():
             query_0001
         )
         total_customer_0001_count = df_0001.iloc[0, 0]
+        last_customer_0001_count = st.write(st.session_state.last_customer_0001_number)
+        new_customer_0001_count = total_customer_0001_count - last_customer_0001_count
+        st.session_state.last_customer_0001_number = total_customer_0001_count
         # 更新指标的值
         metric_value_0001.value = "{:,}".format(total_customer_0001_count)
-        metric_value_0001.delta = "{:,}".format(total_customer_0001_count - st.write(st.session_state.last_customer_0001_number))
-        st.session_state.last_customer_0001_number = total_customer_0001_count
-
+        metric_value_0001.delta = "{:,}".format(new_customer_0001_count)
         
     
         # Rerun the app to refresh the chart
