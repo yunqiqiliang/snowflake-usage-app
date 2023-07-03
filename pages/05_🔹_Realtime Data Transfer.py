@@ -20,10 +20,6 @@ if "last_customer_0003_number" not in st.session_state:
 # )
 def main():
 
-    # Date selector widget
-    with st.sidebar:
-        date_from, date_to = gui.date_selector()
-
     # Header
     # gui.icon("🔹")
     st.title("Real time data transfer, From Postgres to Snowflake")
@@ -36,7 +32,7 @@ def main():
     # Get data
     query_0001 = sql.CUSTOMERS_0001_COUNT_QUERY
     df_0001 = sf.sql_to_dataframe(
-        query_0001.format(date_from=date_from, date_to=date_to)
+        query_0001
     )
     total_customer_0001_count = df_0001.iloc[0, 0]
     last_customer_0001_count = 0
