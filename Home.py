@@ -6,10 +6,6 @@ from utils import gui
 
 gui.icon("🌀")
 
-# Make sure session state is preserved
-for key in st.session_state:
-    st.session_state[key] = st.session_state[key]
-
 # Storing The Context
 if "last_customer_number" not in st.session_state:
     st.session_state.last_customer_number = 0
