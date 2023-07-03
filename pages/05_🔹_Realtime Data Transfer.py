@@ -24,30 +24,41 @@ def main():
 
     gui.space(1)
     st.subheader("Real time data transfer")
+    # Get data
+    query = sql.CUSTOMERS_COUNT_QUERY
+    df = sf.sql_to_dataframe(
+        query.format(date_from=date_from, date_to=date_to)
+    )
+    # st.table(df)
+    
+    
+    total_customer_count = df.iloc[0, 0]
+    if st.last_customer_number == 0 :
+        st.last_customer_number = total_customer_count
+    
+    metric_value=st.metric(label="客户总数", value="{:,}".format(total_customer_count), delta="{:,}".format(total_customer_count - st.last_customer_number))
    
     while True:
+        # Wait for 1 seconds
+        time.sleep(1)
         # Get data
         query = sql.CUSTOMERS_COUNT_QUERY
         df = sf.sql_to_dataframe(
             query.format(date_from=date_from, date_to=date_to)
         )
-        # st.table(df)
         
         
         total_customer_count = df.iloc[0, 0]
         if st.last_customer_number == 0 :
             st.last_customer_number = total_customer_count
-        
-        st.metric(label="客户总数", value="{:,}".format(total_customer_count), delta="{:,}".format(total_customer_count - st.last_customer_number))
-        # st.metric(label="客户总数", value="{:,}".format(total_customer_count))
+        metric_value.update(value="{:,}".format(new_customer_count), delta="{:,}".format(new_customer_count - previous_customer_count))
         st.last_customer_number = total_customer_count
         # query = sql.CUSTOMERS_LIMIT_10
         # df = sf.sql_to_dataframe(
         #     query.format(date_from=date_from, date_to=date_to)
         # )
         # st.table(df)
-        # Wait for 10 seconds
-        time.sleep(1)
+        
     
         # Rerun the app to refresh the chart
         # st.experimental_rerun()
