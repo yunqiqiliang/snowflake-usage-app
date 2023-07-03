@@ -29,7 +29,7 @@ def main():
 
     gui.space(1)
     st.subheader("Real time data transfer")
-    # Get data
+    # Get data customers_0001
     query_0001 = sql.CUSTOMERS_0001_COUNT_QUERY
     df_0001 = sf.sql_to_dataframe(
         query_0001
@@ -40,11 +40,33 @@ def main():
     last_customer_0001_count = st.session_state.last_customer_0001_number
     new_customer_0001_count = total_customer_0001_count - last_customer_0001_count
     metric_value_0001=st.metric(label="Cutomers_0001客户总数", value="{:,}".format(total_customer_0001_count), delta="{:,}".format(new_customer_0001_count))
+    # Get data customers_0002
+    query_0002 = sql.CUSTOMERS_0002_COUNT_QUERY
+    df_0002 = sf.sql_to_dataframe(
+        query_0002
+    )
+    total_customer_0002_count = df_0002.iloc[0, 0]
+    if st.session_state.last_customer_0002_number == 0 :
+        st.session_state.last_customer_0002_number = total_customer_0002_count
+    last_customer_0002_count = st.session_state.last_customer_0002_number
+    new_customer_0002_count = total_customer_0002_count - last_customer_0002_count
+    metric_value_0002=st.metric(label="Cutomers_0002客户总数", value="{:,}".format(total_customer_0002_count), delta="{:,}".format(new_customer_0002_count))
+    # Get data customers_0003
+    query_0003 = sql.CUSTOMERS_0003_COUNT_QUERY
+    df_0003 = sf.sql_to_dataframe(
+        query_0003
+    )
+    total_customer_0003_count = df_0003.iloc[0, 0]
+    if st.session_state.last_customer_0003_number == 0 :
+        st.session_state.last_customer_0003_number = total_customer_0003_count
+    last_customer_0003_count = st.session_state.last_customer_0003_number
+    new_customer_0003_count = total_customer_0003_count - last_customer_0003_count
+    metric_value_0003=st.metric(label="Cutomers_0003客户总数", value="{:,}".format(total_customer_0003_count), delta="{:,}".format(new_customer_0003_count))
    
     while True:
         # Wait for 1 seconds
-        time.sleep(1)
-        # Get data
+        time.sleep(3)
+        # Get data customers_0001
         df_0001 = sf.sql_to_dataframe(
             query_0001
         )
@@ -55,6 +77,30 @@ def main():
         # 更新指标的值
         metric_value_0001.value = "{:,}".format(total_customer_0001_count)
         metric_value_0001.delta = "{:,}".format(new_customer_0001_count)
+
+        # Get data customers_0002
+        df_0002 = sf.sql_to_dataframe(
+            query_0002
+        )
+        total_customer_0002_count = df_0002.iloc[0, 0]
+        last_customer_0002_count = st.session_state.last_customer_0002_number
+        new_customer_0002_count = total_customer_0002_count - last_customer_0002_count
+        st.session_state.last_customer_0002_number = total_customer_0002_count
+        # 更新指标的值
+        metric_value_0002.value = "{:,}".format(total_customer_0002_count)
+        metric_value_0002.delta = "{:,}".format(new_customer_0002_count)
+
+        # Get data customers_0003
+        df_0003 = sf.sql_to_dataframe(
+            query_0003
+        )
+        total_customer_0003_count = df_0003.iloc[0, 0]
+        last_customer_0003_count = st.session_state.last_customer_0003_number
+        new_customer_0003_count = total_customer_0003_count - last_customer_0003_count
+        st.session_state.last_customer_0003_number = total_customer_0003_count
+        # 更新指标的值
+        metric_value_0003.value = "{:,}".format(total_customer_0003_count)
+        metric_value_0003.delta = "{:,}".format(new_customer_0003_count)
 
 if __name__ == "__main__":
     main()
