@@ -42,9 +42,6 @@ def main():
         # Wait for 1 seconds
         time.sleep(1)
         # Get data
-        df_0001 = sf.sql_to_dataframe(
-            query_0001
-        )
         total_customer_0001_count = df_0001.iloc[0, 0]
         last_customer_0001_count = st.session_state.last_customer_0001_number
         new_customer_0001_count = total_customer_0001_count - last_customer_0001_count
