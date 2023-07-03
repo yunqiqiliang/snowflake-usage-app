@@ -29,6 +29,10 @@ def main():
 
     gui.space(1)
     st.subheader("Real time data transfer")
+
+    # 使用Streamlit的两列布局
+    col1, col2, col3 = st.beta_columns(3)
+    
     # Get data customers_0001
     query_0001 = sql.CUSTOMERS_0001_COUNT_QUERY
     df_0001 = sf.sql_to_dataframe(
@@ -39,7 +43,8 @@ def main():
         st.session_state.last_customer_0001_number = total_customer_0001_count
     last_customer_0001_count = st.session_state.last_customer_0001_number
     new_customer_0001_count = total_customer_0001_count - last_customer_0001_count
-    metric_value_0001=st.metric(label="Cutomers_0001客户总数", value="{:,}".format(total_customer_0001_count), delta="{:,}".format(new_customer_0001_count))
+    with col1:
+        metric_value_0001=st.metric(label="Cutomers_0001客户总数", value="{:,}".format(total_customer_0001_count), delta="{:,}".format(new_customer_0001_count))
     # Get data customers_0002
     query_0002 = sql.CUSTOMERS_0002_COUNT_QUERY
     df_0002 = sf.sql_to_dataframe(
@@ -50,7 +55,8 @@ def main():
         st.session_state.last_customer_0002_number = total_customer_0002_count
     last_customer_0002_count = st.session_state.last_customer_0002_number
     new_customer_0002_count = total_customer_0002_count - last_customer_0002_count
-    metric_value_0002=st.metric(label="Cutomers_0002客户总数", value="{:,}".format(total_customer_0002_count), delta="{:,}".format(new_customer_0002_count))
+    with col2:
+        metric_value_0002=st.metric(label="Cutomers_0002客户总数", value="{:,}".format(total_customer_0002_count), delta="{:,}".format(new_customer_0002_count))
     # Get data customers_0003
     query_0003 = sql.CUSTOMERS_0003_COUNT_QUERY
     df_0003 = sf.sql_to_dataframe(
@@ -61,7 +67,8 @@ def main():
         st.session_state.last_customer_0003_number = total_customer_0003_count
     last_customer_0003_count = st.session_state.last_customer_0003_number
     new_customer_0003_count = total_customer_0003_count - last_customer_0003_count
-    metric_value_0003=st.metric(label="Cutomers_0003客户总数", value="{:,}".format(total_customer_0003_count), delta="{:,}".format(new_customer_0003_count))
+    with col3:
+        metric_value_0003=st.metric(label="Cutomers_0003客户总数", value="{:,}".format(total_customer_0003_count), delta="{:,}".format(new_customer_0003_count))
    
     while True:
         # Wait for 1 seconds
