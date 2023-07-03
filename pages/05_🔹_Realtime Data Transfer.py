@@ -29,7 +29,7 @@ def main():
     df_0001 = sf.sql_to_dataframe(
         query_0001.format(date_from=date_from, date_to=date_to)
     )
-    total_customer_0001_count = df.iloc[0, 0]
+    total_customer_0001_count = df_0001.iloc[0, 0]
     if st.last_customer_0001_number == 0 :
         st.last_customer_0001_number = total_customer_0001_count
     
