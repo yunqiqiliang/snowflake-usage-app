@@ -6,18 +6,6 @@ from utils import gui
 
 gui.icon("🌀")
 
-# Storing The Context
-if "last_customer_number" not in st.session_state:
-    st.session_state.last_customer_number = 0
-if "last_customer_0001_number" not in st.session_state:
-    st.session_state.last_customer_0001_number = 0
-if "last_customer_0002_number" not in st.session_state:
-    st.session_state.last_customer_0002_number = 0
-if "last_customer_0003_number" not in st.session_state:
-    st.session_state.last_customer_0003_number = 0
-
-
-
 st.title("Welcome to Qiliang's Snowflake Usage Insights!")
 st.sidebar.text(f"Account: {st.secrets.sf_usage_app.account}")
 st.sidebar.text(f"Snowflake Role: accountadmin")
