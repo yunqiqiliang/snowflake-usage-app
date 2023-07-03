@@ -12,13 +12,13 @@ for key in st.session_state:
 
 # Storing The Context
 if "last_customer_number" not in st.session_state:
-    st.last_customer_number = 0
+    st.session_state.last_customer_number = 0
 if "last_customer_0001_number" not in st.session_state:
-    st.last_customer_0001_number = 0
+    st.session_state.last_customer_0001_number = 0
 if "last_customer_0002_number" not in st.session_state:
-    st.last_customer_0002_number = 0
+    st.session_state.last_customer_0002_number = 0
 if "last_customer_0003_number" not in st.session_state:
-    st.last_customer_0003_number = 0
+    st.session_state.last_customer_0003_number = 0
 
 
 
