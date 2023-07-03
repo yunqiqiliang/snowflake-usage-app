@@ -87,7 +87,7 @@ def main():
         # 更新指标的值
         metric_value_0001.value = "{:,}".format(total_customer_0001_count)
         metric_value_0001.delta = "{:,}".format(new_customer_0001_count)
-        # st.write(metric_value_0001)
+        st.write(metric_value_0001)
 
         # Get data customers_0002
         df_0002 = sf.sql_to_dataframe(
@@ -100,7 +100,7 @@ def main():
         # 更新指标的值
         metric_value_0002.value = "{:,}".format(total_customer_0002_count)
         metric_value_0002.delta = "{:,}".format(new_customer_0002_count)
-        # st.write(metric_value_0002)
+        st.write(metric_value_0002)
 
         # Get data customers_0003
         df_0003 = sf.sql_to_dataframe(
@@ -113,7 +113,7 @@ def main():
         # 更新指标的值
         metric_value_0003.value = "{:,}".format(total_customer_0003_count)
         metric_value_0003.delta = "{:,}".format(new_customer_0003_count)
-        # st.write(metric_value_0003)
+        st.write(metric_value_0003)
 
 if __name__ == "__main__":
     main()
