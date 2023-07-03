@@ -10,17 +10,17 @@ from customers.public.customers;
 
 CUSTOMERS_0001_COUNT_QUERY = """
 select count(*)
-from customers_0001.public.customers;
+from CUSTOMERS.PUBLIC.CUSTOMERS_0001;
 """
 
 CUSTOMERS_0002_COUNT_QUERY = """
 select count(*)
-from customers_0002.public.customers;
+from CUSTOMERS.PUBLIC.CUSTOMERS_0002;
 """
 
 CUSTOMERS_0003_COUNT_QUERY = """
 select count(*)
-from customers_0003.public.customers;
+from CUSTOMERS.PUBLIC.CUSTOMERS_0003;
 """
 
 QUERIES_QUERY = """
