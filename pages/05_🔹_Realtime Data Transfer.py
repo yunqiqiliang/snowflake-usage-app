@@ -31,7 +31,7 @@ def main():
     st.subheader("Real time data transfer")
 
     # 使用Streamlit的两列布局
-    col1, col2, col3 = st.beta_columns(3)
+    col1, col2, col3 = st.columns(3)
     
     # Get data customers_0001
     query_0001 = sql.CUSTOMERS_0001_COUNT_QUERY
