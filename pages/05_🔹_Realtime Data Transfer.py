@@ -4,6 +4,7 @@ import time
 from utils import charts, gui, processing
 from utils import snowflake_connector as sf
 from utils import sql as sql
+from streamlit import SessionState
 
 
 # st.set_page_config(
@@ -30,8 +31,10 @@ def main():
         query_0001.format(date_from=date_from, date_to=date_to)
     )
     total_customer_0001_count = df_0001.iloc[0, 0]
-    if st.last_customer_0001_number == 0 :
-        st.last_customer_0001_number = total_customer_0001_count
+    state = SessionState.get(last_customer_0001_number=0)
+
+    if state.last_customer_0001_number == 0 :
+        state.last_customer_0001_number = total_customer_0001_count
     
     metric_value_0001=st.metric(label="Cutomers_0001客户总数", value="{:,}".format(total_customer_0001_count), delta="{:,}".format(total_customer_0001_count - st.last_customer_0001_number))
    
@@ -47,7 +50,7 @@ def main():
         # 更新指标的值
         metric_value_0001.value = "{:,}".format(total_customer_0001_count)
         metric_value_0001.delta = "{:,}".format(total_customer_0001_count - st.last_customer_0001_number)
-        st.last_customer_0001_number = total_customer_0001_count
+        state.last_customer_0001_number = total_customer_0001_count
 
         
     
