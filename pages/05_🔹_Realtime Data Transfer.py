@@ -108,6 +108,8 @@ def main():
         # 更新指标的值
         metric_value_0003.value = "{:,}".format(total_customer_0003_count)
         metric_value_0003.delta = "{:,}".format(new_customer_0003_count)
+
+        st.experimental_rerun()
         
 
 if __name__ == "__main__":
