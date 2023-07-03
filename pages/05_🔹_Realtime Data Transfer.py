@@ -41,6 +41,7 @@ def main():
     total_customer_0001_count = df_0001.iloc[0, 0]
     last_customer_0001_count = 0
     new_customer_0001_count = 0
+    st.write(st.session_state.last_customer_0001_number) = 0
     if st.write(st.session_state.last_customer_0001_number) == 0 :
         st.session_state.last_customer_0001_number = total_customer_0001_count
     last_customer_0001_count = st.write(st.session_state.last_customer_0001_number)
