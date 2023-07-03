@@ -31,10 +31,10 @@ def main():
     )
     total_customer_0001_count = df_0001.iloc[0, 0]
 
-    if st.last_customer_0001_number == 0 :
-        st.last_customer_0001_number = total_customer_0001_count
+    if st.session_state.last_customer_0001_number == 0 :
+        st.session_state.last_customer_0001_number = total_customer_0001_count
     
-    metric_value_0001=st.metric(label="Cutomers_0001客户总数", value="{:,}".format(total_customer_0001_count), delta="{:,}".format(total_customer_0001_count - st.last_customer_0001_number))
+    metric_value_0001=st.metric(label="Cutomers_0001客户总数", value="{:,}".format(total_customer_0001_count), delta="{:,}".format(total_customer_0001_count - st.session_state.last_customer_0001_number))
    
     while True:
         # Wait for 1 seconds
@@ -47,8 +47,8 @@ def main():
         total_customer_0001_count = df_0001.iloc[0, 0]
         # 更新指标的值
         metric_value_0001.value = "{:,}".format(total_customer_0001_count)
-        metric_value_0001.delta = "{:,}".format(total_customer_0001_count - st.last_customer_0001_number)
-        st.last_customer_0001_number = total_customer_0001_count
+        metric_value_0001.delta = "{:,}".format(total_customer_0001_count - st.session_state.last_customer_0001_number)
+        st.session_state.last_customer_0001_number = total_customer_0001_count
 
         
     
