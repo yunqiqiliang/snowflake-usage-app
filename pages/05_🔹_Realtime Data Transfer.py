@@ -32,6 +32,9 @@ def main():
 
     # 使用Streamlit的两列布局
     col1, col2, col3 = st.columns(3)
+    metric_value_0001 = st.empty()
+    metric_value_0002 = st.empty()
+    metric_value_0003 = st.empty()
     
     # Get data customers_0001
     query_0001 = sql.CUSTOMERS_0001_COUNT_QUERY
