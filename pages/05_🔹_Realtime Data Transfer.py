@@ -43,7 +43,7 @@ def main():
     if st.write(st.session_state.last_customer_0001_number) == 0 :
         st.session_state.last_customer_0001_number = total_customer_0001_count
     
-    metric_value_0001=st.metric(label="Cutomers_0001客户总数", value="{:,}".format(total_customer_0001_count), delta="{:,}".format(total_customer_0001_count - st.write(st.session_state.last_customer_0001_number))
+    metric_value_0001=st.metric(label="Cutomers_0001客户总数", value="{:,}".format(total_customer_0001_count), delta="{:,}".format(total_customer_0001_count - st.write(st.session_state.last_customer_0001_number)))
    
     while True:
         # Wait for 1 seconds
