@@ -5,6 +5,15 @@ from utils import charts, gui, processing
 from utils import snowflake_connector as sf
 from utils import sql as sql
 
+# Storing The Context
+if "last_customer_number" not in st.session_state:
+    st.session_state.last_customer_number = 0
+if "last_customer_0001_number" not in st.session_state:
+    st.session_state.last_customer_0001_number = 0
+if "last_customer_0002_number" not in st.session_state:
+    st.session_state.last_customer_0002_number = 0
+if "last_customer_0003_number" not in st.session_state:
+    st.session_state.last_customer_0003_number = 0
 
 # st.set_page_config(
 #     page_title="Usage Insights app - Real time data transfer", page_icon="🔹", layout="wide"
