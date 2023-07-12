@@ -3,7 +3,7 @@ import pandas as pd
 
 username = st.secrets.lakehouse.username
 password = st.secrets.lakehouse.password
-account = st.secrets.lakehouse.acount
+account = st.secrets.lakehouse.account
 base_url =st.secrets.lakehouse.baseurl
 database = st.secrets.lakehouse.database
 schema = st.secrets.lakehouse.schema
