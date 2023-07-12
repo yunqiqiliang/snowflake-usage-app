@@ -8,9 +8,7 @@ baseurl =st.secrets.lakehouse.baseurl
 database = st.secrets.lakehouse.database
 schema = st.secrets.lakehouse.schema
 virtualcluster =st.secrets.lakehouse.virtualcluster
-clickzettaurl="clickzetta://"+
-              username+
-              ":"+password+"@"+account+"."+baseurl+"/"+ database +"?schema="+ schema+ "&virtualcluster=" + virtualcluster
+clickzettaurl="clickzetta://"+ username + ":"+password+"@"+account+"."+baseurl+"/"+ database +"?schema="+ schema+ "&virtualcluster=" + virtualcluster
 lakehouse_conn = st.experimental_connection(
   "clickzetta",
   type="sql",
