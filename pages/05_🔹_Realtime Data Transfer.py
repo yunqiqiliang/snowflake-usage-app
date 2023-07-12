@@ -35,7 +35,6 @@ def main():
     schema = st.secrets.lakehouse.schema
     virtualcluster =st.secrets.lakehouse.virtualcluster
     clickzettaurl="clickzetta://"+username+":"+password+"@"+account+"."+baseurl+"/"+ database +"?schema="+ schema+ "&virtualcluster=" + virtualcluster
-    print(f"clickzettaurl: {clickzettaurl}")
     st.subheader(clickzettaurl)
 
     # 使用Streamlit的两列布局
