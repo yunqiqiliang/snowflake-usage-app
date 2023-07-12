@@ -15,12 +15,12 @@ from yellow_tripdata;
 
 CUSTOMERS_0002_COUNT_QUERY = """
 select count(*)
-from CUSTOMERS.PUBLIC.CUSTOMERS_0002;
+from yellow_tripdata;
 """
 
 CUSTOMERS_0003_COUNT_QUERY = """
 select count(*)
-from CUSTOMERS.PUBLIC.CUSTOMERS_0003;
+from yellow_tripdata;
 """
 
 QUERIES_QUERY = """
