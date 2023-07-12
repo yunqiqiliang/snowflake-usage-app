@@ -70,7 +70,7 @@ def main():
    
     while True:
         # Wait for 1 seconds
-        time.sleep(3)
+        time.sleep(30)
         # Get data customers_0001
         df_0001 = cz.get_lakehouse_queries_data(
             query_0001
