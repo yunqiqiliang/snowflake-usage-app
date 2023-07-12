@@ -34,7 +34,9 @@ def main():
     database = st.secrets.lakehouse.database
     schema = st.secrets.lakehouse.schema
     virtualcluster =st.secrets.lakehouse.virtualcluster
-    clickzettaurl="clickzetta://"+ username + ":"+password+"@"+account+"."+baseurl+"/"+ database +"?schema="+ schema+ "&virtualcluster=" + virtualcluster
+    clickzettaurl="clickzetta://"+
+        username+
+        ":"+password+"@"+account+"."+baseurl+"/"+ database +"?schema="+ schema+ "&virtualcluster=" + virtualcluster
     print(f"clickzettaurl: {clickzettaurl}")
     st.subheader(clickzettaurl)
 
