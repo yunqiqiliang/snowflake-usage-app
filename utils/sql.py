@@ -1,11 +1,11 @@
 CUSTOMERS_LIMIT_10 = """
 select *
-from customers.public.customers limit 10;
+from yellow_tripdata limit 10;
 """
 
 CUSTOMERS_COUNT_QUERY = """
 select count(*)
-from customers.public.customers;
+from yellow_tripdata;
 """
 
 CUSTOMERS_0001_COUNT_QUERY = """
