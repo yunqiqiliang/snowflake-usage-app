@@ -8,13 +8,13 @@ baseurl =st.secrets.lakehouse.baseurl
 database = st.secrets.lakehouse.database
 schema = st.secrets.lakehouse.schema
 virtualcluster =st.secrets.lakehouse.virtualcluster
-
+clickzettaurl="clickzetta://"+
+              username+
+              ":"+password+"@"+account+"."+baseurl+"/"+ database +"?schema="+ schema+ "&virtualcluster=" + virtualcluster
 lakehouse_conn = st.experimental_connection(
   "clickzetta",
   type="sql",
-  url="clickzetta://"+
-        username+
-        ":"+password+"@"+account+"."+baseurl+"/"+ database +"?schema="+ schema+ "&virtualcluster=" + virtualcluster
+  url= clickzettaurl
 )
 TIME_TO_LIVE = 0 * 0 * 0  # 6 hours caching
 @st.experimental_memo(ttl=TIME_TO_LIVE)
@@ -22,6 +22,7 @@ def get_lakehouse_queries_data(sql_query: str) -> (pd.DataFrame, str, str):
     data = pd.DataFrame()
     error_code = ""
     error_reason = ""
+    print(f"clickzettaurl: {clickzettaurl}")
     try:
         # 执行 SQL 查询
         data = lakehouse_conn.query(sql_query)
