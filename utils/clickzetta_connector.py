@@ -16,7 +16,7 @@ lakehouse_conn = st.experimental_connection(
         username+
         ":"+password+"@"+account+"."+baseurl+"/"+ database +"?schema="+ schema+ "&virtualcluster=" + virtualcluster
 )
-# TIME_TO_LIVE = 60 * 60 * 6  # 6 hours caching
+TIME_TO_LIVE = 0 * 0 * 0  # 6 hours caching
 @st.experimental_memo(ttl=TIME_TO_LIVE)
 def get_lakehouse_queries_data(sql_query: str) -> (pd.DataFrame, str, str):
     data = pd.DataFrame()
