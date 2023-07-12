@@ -1,7 +1,6 @@
 import plost
 import streamlit as st
 import time
-from utils import charts, gui, processing
 from utils import snowflake_connector as sf
 from utils import clickzetta_connector as cz
 from utils import sql as sql
@@ -22,13 +21,11 @@ if "last_customer_0003_number" not in st.session_state:
 def main():
 
     # Header
-    # gui.icon("🔹")
     st.title("Real time data transfer, From Postgres to Snowflake")
      # --------------------------------
     # ---- Real time data transfer ----
     # ---------------------------------
 
-    gui.space(1)
     st.subheader("Real time data transfer")
 
     # 使用Streamlit的两列布局
