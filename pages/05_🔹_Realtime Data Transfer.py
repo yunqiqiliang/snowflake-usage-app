@@ -3,7 +3,7 @@ import streamlit as st
 import time
 from utils import charts, gui, processing
 from utils import snowflake_connector as sf
-from utils import snowflake_connector as cz
+from utils import clickzetta_connector as cz
 from utils import sql as sql
 
 # Storing The Context
