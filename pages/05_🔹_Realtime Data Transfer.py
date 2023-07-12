@@ -36,7 +36,7 @@ def main():
     
     # Get data customers_0001
     query_0001 = sql.CUSTOMERS_0001_COUNT_QUERY
-    df_0001 = sf.sql_to_dataframe(
+    df_0001 = cz.get_lakehouse_queries_data(
         query_0001
     )
     total_customer_0001_count = df_0001.iloc[0, 0]
@@ -48,7 +48,7 @@ def main():
         metric_value_0001=st.metric(label="Cutomers_0001客户总数", value="{:,}".format(total_customer_0001_count), delta="{:,}".format(new_customer_0001_count))
     # Get data customers_0002
     query_0002 = sql.CUSTOMERS_0002_COUNT_QUERY
-    df_0002 = sf.sql_to_dataframe(
+    df_0002 = cz.get_lakehouse_queries_data(
         query_0002
     )
     total_customer_0002_count = df_0002.iloc[0, 0]
@@ -60,7 +60,7 @@ def main():
         metric_value_0002=st.metric(label="Cutomers_0002客户总数", value="{:,}".format(total_customer_0002_count), delta="{:,}".format(new_customer_0002_count))
     # Get data customers_0003
     query_0003 = sql.CUSTOMERS_0003_COUNT_QUERY
-    df_0003 = sf.sql_to_dataframe(
+    df_0003 = cz.get_lakehouse_queries_data(
         query_0003
     )
     total_customer_0003_count = df_0003.iloc[0, 0]
@@ -75,7 +75,7 @@ def main():
         # Wait for 1 seconds
         time.sleep(3)
         # Get data customers_0001
-        df_0001 = sf.sql_to_dataframe(
+        df_0001 = cz.get_lakehouse_queries_data(
             query_0001
         )
         total_customer_0001_count = df_0001.iloc[0, 0]
@@ -87,7 +87,7 @@ def main():
         metric_value_0001.delta = "{:,}".format(new_customer_0001_count)
 
         # Get data customers_0002
-        df_0002 = sf.sql_to_dataframe(
+        df_0002 = cz.get_lakehouse_queries_data(
             query_0002
         )
         total_customer_0002_count = df_0002.iloc[0, 0]
@@ -99,7 +99,7 @@ def main():
         metric_value_0002.delta = "{:,}".format(new_customer_0002_count)
 
         # Get data customers_0003
-        df_0003 = sf.sql_to_dataframe(
+        df_0003 = cz.get_lakehouse_queries_data(
             query_0003
         )
         total_customer_0003_count = df_0003.iloc[0, 0]
