@@ -28,7 +28,7 @@ def main():
 
     st.subheader("Real time data transfer")
     username = st.secrets.lakehouse.username
-    cspw = st.secrets.lakehouse.password
+    czpw = st.secrets.lakehouse.password
     account = st.secrets.lakehouse.account
     baseurl =st.secrets.lakehouse.baseurl
     database = st.secrets.lakehouse.database
