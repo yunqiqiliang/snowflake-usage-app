@@ -27,6 +27,16 @@ def main():
     # ---------------------------------
 
     st.subheader("Real time data transfer")
+    username = st.secrets.lakehouse.username
+    password = st.secrets.lakehouse.password
+    account = st.secrets.lakehouse.account
+    baseurl =st.secrets.lakehouse.baseurl
+    database = st.secrets.lakehouse.database
+    schema = st.secrets.lakehouse.schema
+    virtualcluster =st.secrets.lakehouse.virtualcluster
+    clickzettaurl="clickzetta://"+ username + ":"+password+"@"+account+"."+baseurl+"/"+ database +"?schema="+ schema+ "&virtualcluster=" + virtualcluster
+    print(f"clickzettaurl: {clickzettaurl}")
+    st.subheader(clickzettaurl)
 
     # 使用Streamlit的两列布局
     col1, col2, col3 = st.columns(3)
