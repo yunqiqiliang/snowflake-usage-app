@@ -15,6 +15,7 @@ lakehouse_conn = st.experimental_connection(
   url="clickzetta://"+
         username+
         ":"+password+"@"+account+"."+baseurl+"/"+ database +"?schema="+ schema+ "&virtualcluster=" + virtualcluster
+  print(f"Clickzetta URL: {url}")
 )
 TIME_TO_LIVE = 0 * 0 * 0  # 6 hours caching
 @st.experimental_memo(ttl=TIME_TO_LIVE)
