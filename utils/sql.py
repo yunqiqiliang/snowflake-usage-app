@@ -10,7 +10,7 @@ from customers.public.customers;
 
 CUSTOMERS_0001_COUNT_QUERY = """
 select count(*)
-from CUSTOMERS.PUBLIC.CUSTOMERS_0001;
+from yellow_tripdata;
 """
 
 CUSTOMERS_0002_COUNT_QUERY = """
