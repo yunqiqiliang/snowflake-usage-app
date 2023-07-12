@@ -4,7 +4,7 @@ import pandas as pd
 username = st.secrets.lakehouse.username
 password = st.secrets.lakehouse.password
 account = st.secrets.lakehouse.account
-base_url =st.secrets.lakehouse.baseurl
+baseurl =st.secrets.lakehouse.baseurl
 database = st.secrets.lakehouse.database
 schema = st.secrets.lakehouse.schema
 virtualcluster =st.secrets.lakehouse.virtualcluster
@@ -14,7 +14,7 @@ lakehouse_conn = st.experimental_connection(
   type="sql",
   url="clickzetta://"+
         username+
-        ":"+password+"@"+account+"."+base_url+"/"+ database +"?schema="+ schema+ "&virtualcluster=" + virtualcluster
+        ":"+password+"@"+account+"."+baseurl+"/"+ database +"?schema="+ schema+ "&virtualcluster=" + virtualcluster
 )
 # TIME_TO_LIVE = 60 * 60 * 6  # 6 hours caching
 @st.experimental_memo(ttl=TIME_TO_LIVE)
