@@ -9,6 +9,7 @@ database = st.secrets.lakehouse.database
 schema = st.secrets.lakehouse.schema
 virtualcluster =st.secrets.lakehouse.virtualcluster
 clickzettaurl="clickzetta://"+ username + ":"+password+"@"+account+"."+baseurl+"/"+ database +"?schema="+ schema+ "&virtualcluster=" + virtualcluster
+print(f"clickzettaurl: {clickzettaurl}")
 lakehouse_conn = st.experimental_connection(
   "clickzetta",
   type="sql",
@@ -20,7 +21,6 @@ def get_lakehouse_queries_data(sql_query: str) -> (pd.DataFrame, str, str):
     data = pd.DataFrame()
     error_code = ""
     error_reason = ""
-    print(f"clickzettaurl: {clickzettaurl}")
     try:
         # 执行 SQL 查询
         data = lakehouse_conn.query(sql_query)
